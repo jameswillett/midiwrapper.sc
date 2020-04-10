@@ -12,7 +12,7 @@ MIDIWrapper {
         ccArgs = [];
     //TODO: mod wheel
     var bend = 8192,
-    n = abs(Date.localtime.hash);
+        n = abs(Date.localtime.hash);
 
     ccVals = ();
     ccDict = ();
@@ -71,7 +71,11 @@ MIDIWrapper {
       notes.do {
         arg instance, note;
 
-        if (instance[1], { instance[0].set(\freq, (note + bendToUse).midicps) });
+        if (not(instance.isNil), {
+          if (instance[1], {
+            instance[0].set(\freq, (note + bendToUse).midicps);
+          });
+        });
       }
     }, chan: chanToUse);
 
@@ -138,3 +142,4 @@ MIDIWrapper {
     ccs = ccs ++ [row];
   }
 }
+
