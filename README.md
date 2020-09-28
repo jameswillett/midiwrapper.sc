@@ -1,7 +1,7 @@
 # midiwrapper.sc
 A wrapper for Supercollider synths to reduce MIDI boilerplate
 
-```
+```supercollider
 // a synth i definitely did not steal from an eli fieldsteel video
 (
 SynthDef.new(\tone, {
@@ -24,7 +24,13 @@ SynthDef.new(\tone, {
 
 // initialize
 // ccArgs is an array of "tuples":
-// [[ cc number, arg to be updated, min (midi value 0), max (midi value 127) ]]
+// [[ 
+//	cc number, 
+//	arg to be updated, 
+//	min (the value of the arg at midi value 0),
+//	max (the value of the arg at midi value 127)
+// ]]
+// TODO: Currently the scaling is only linear, other scalings to be supported
 a = MIDIWrapper.init(\tone, ccArgs: [[4, \vibamp, 0, 8]]);
 
 // update 1+ cc scaling(s) [ arg, [ min, max ], arg, [ min, max ] ...]
